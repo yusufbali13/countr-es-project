@@ -13,7 +13,7 @@ const fetchAllCountries = async () => {
   try {
     const res = await fetch(`https://restcountries.com/v3.1/all`);
     if (!res.ok) {
-      renderError(`Something went wrong:${res.status}`);
+      renderError(`${res.status}`);
       throw new Error();
     }
     const data = await res.json();
@@ -37,7 +37,6 @@ const getCountryNames = (data) => {
 const renderError = (err) => {
   const countries = document.querySelector(".countries");
   countries.innerHTML = `
-    <h3 class="text-danger text-center m-5">${err}</h3>
     <img src='./404.png.jpg' alt="" />
   `;
 };
